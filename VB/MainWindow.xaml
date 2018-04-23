@@ -1,0 +1,174 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" x:Class="WpfApplication6.MainWindow"
+    xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+    xmlns:local="clr-namespace:WpfApplication6"
+    xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+    xmlns:dxgt="http://schemas.devexpress.com/winfx/2008/xaml/grid/themekeys"
+    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+    xmlns:dxcn="clr-namespace:DevExpress.Xpf.Core.Native;assembly=DevExpress.Xpf.Core.v14.1"
+    xmlns:dxght="clr-namespace:DevExpress.Xpf.Grid.HitTest"
+        Title="MainWindow" Height="350" Width="535">
+    <Window.DataContext>
+        <local:ViewModel/>
+    </Window.DataContext>
+    <Window.Resources>
+        <Style TargetType="dxg:GridColumnHeader">
+            <Setter Property="ShowFilterButtonOnHover" Value="False"/>
+        </Style>
+        <LinearGradientBrush x:Key="pressedBrush" StartPoint="0,0" EndPoint="0,1" >
+            <GradientStop Color="#FF2C4B8E" Offset="0" />
+            <GradientStop Color="#FF416CAB" Offset="0.07"/>
+            <GradientStop Color="#FF2C5494" Offset="0.46" />
+            <GradientStop Color="#FF224784" Offset="0.46" />
+            <GradientStop Color="#FF2C5597" Offset="1" />
+        </LinearGradientBrush>
+        <SolidColorBrush x:Key="borderBrush" Color="#FF062B63"/>
+        <LinearGradientBrush x:Key="glareBrush" StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#57CDE2FF" Offset="0" />
+            <GradientStop Color="#00C0DAFB" Offset="1" />
+        </LinearGradientBrush>
+        <ControlTemplate x:Key="{dxgt:GridColumnHeaderThemeKey ResourceKey=ControlTemplate}" TargetType="{x:Type dxg:GridColumnHeaderBase}">
+            <local:MyColumnHeaderDockPanel x:Name="PART_LayoutPanel" TextElement.Foreground="{StaticResource {dxgt:GridColumnHeaderThemeKey ResourceKey=HeaderCaptionForeground}}" ContentMargin="4,4,4,6">
+                <Border x:Name="PART_Border" BorderBrush="{StaticResource borderBrush}" BorderThickness="0,1,1,1">
+                    <Border.Background>
+                        <LinearGradientBrush x:Name="backgroundBrush" StartPoint="0,0" EndPoint="0,1">
+                            <GradientStop Color="#FFA2C5F4" Offset="0"/>
+                            <GradientStop Color="#FF6086BE" Offset="0.05" />
+                            <GradientStop Color="#FF3A629F" Offset="0.35" />
+                            <GradientStop Color="#FF2C5494" Offset="0.46" />
+                            <GradientStop Color="#FF244985" Offset="0.46" />
+                            <GradientStop Color="#FF7499CE" Offset="1" />
+                        </LinearGradientBrush>
+                    </Border.Background>
+                </Border>
+                <Border Background="{StaticResource glareBrush}" Width="1" Margin="0,1" HorizontalAlignment="Left"/>
+            </local:MyColumnHeaderDockPanel>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Trigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ColorAnimation Storyboard.TargetName="backgroundBrush" Storyboard.TargetProperty="(GradientBrush.GradientStops)[0].(GradientStop.Color)" To="#FFC2DBFD" Duration="0:0:0.2"/>
+                                <ColorAnimation Storyboard.TargetName="backgroundBrush" Storyboard.TargetProperty="(GradientBrush.GradientStops)[1].(GradientStop.Color)" To="#FF7CABDA" Duration="0:0:0.2"/>
+                                <ColorAnimation Storyboard.TargetName="backgroundBrush" Storyboard.TargetProperty="(GradientBrush.GradientStops)[2].(GradientStop.Color)" To="#FF4F78B5" Duration="0:0:0.2"/>
+                                <ColorAnimation Storyboard.TargetName="backgroundBrush" Storyboard.TargetProperty="(GradientBrush.GradientStops)[3].(GradientStop.Color)" To="#FF3863A7" Duration="0:0:0.2"/>
+                                <ColorAnimation Storyboard.TargetName="backgroundBrush" Storyboard.TargetProperty="(GradientBrush.GradientStops)[4].(GradientStop.Color)" To="#FF2C5597" Duration="0:0:0.2"/>
+                                <ColorAnimation Storyboard.TargetName="backgroundBrush" Storyboard.TargetProperty="(GradientBrush.GradientStops)[5].(GradientStop.Color)" To="#FF9AD5F6" Duration="0:0:0.2"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.EnterActions>
+                    <Trigger.ExitActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ColorAnimation Storyboard.TargetName="backgroundBrush" Storyboard.TargetProperty="(GradientBrush.GradientStops)[0].(GradientStop.Color)" To="#FFA2C5F4" Duration="0:0:0.3"/>
+                                <ColorAnimation Storyboard.TargetName="backgroundBrush" Storyboard.TargetProperty="(GradientBrush.GradientStops)[1].(GradientStop.Color)" To="#FF6086BE" Duration="0:0:0.3"/>
+                                <ColorAnimation Storyboard.TargetName="backgroundBrush" Storyboard.TargetProperty="(GradientBrush.GradientStops)[2].(GradientStop.Color)" To="#FF3A629F" Duration="0:0:0.3"/>
+                                <ColorAnimation Storyboard.TargetName="backgroundBrush" Storyboard.TargetProperty="(GradientBrush.GradientStops)[3].(GradientStop.Color)" To="#FF2C5494" Duration="0:0:0.3"/>
+                                <ColorAnimation Storyboard.TargetName="backgroundBrush" Storyboard.TargetProperty="(GradientBrush.GradientStops)[4].(GradientStop.Color)" To="#FF244985" Duration="0:0:0.3"/>
+                                <ColorAnimation Storyboard.TargetName="backgroundBrush" Storyboard.TargetProperty="(GradientBrush.GradientStops)[5].(GradientStop.Color)" To="#FF7499CE" Duration="0:0:0.3"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.ExitActions>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" TargetName="PART_Border" Value="{StaticResource pressedBrush}"/>
+                </Trigger>
+                <Trigger Property="ColumnPosition" Value="Standalone">
+                    <Setter Property="BorderThickness" Value="1" TargetName="PART_Border"/>
+                    <Setter Property="CornerRadius" Value="3" TargetName="PART_Border"/>
+                </Trigger>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="ColumnPosition" Value="Right"/>
+                        <Condition Property="HasTopElement" Value="False"/>
+                    </MultiTrigger.Conditions>
+                    <Setter Property="BorderThickness" Value="1" TargetName="PART_Border"/>
+                    <Setter Property="CornerRadius" Value="0,3,0,0" TargetName="PART_Border"/>
+                </MultiTrigger>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="ColumnPosition" Value="Left"/>
+                        <Condition Property="HasTopElement" Value="False"/>
+                    </MultiTrigger.Conditions>
+                    <Setter Property="BorderThickness" Value="1" TargetName="PART_Border"/>
+                    <Setter Property="CornerRadius" Value="3,0,0,0" TargetName="PART_Border"/>
+                </MultiTrigger>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="ColumnPosition" Value="Right"/>
+                        <Condition Property="HasTopElement" Value="True"/>
+                    </MultiTrigger.Conditions>
+                    <Setter Property="BorderThickness" Value="1,0,1,1" TargetName="PART_Border"/>
+                </MultiTrigger>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="ColumnPosition" Value="Left"/>
+                        <Condition Property="HasTopElement" Value="True"/>
+                    </MultiTrigger.Conditions>
+                    <Setter Property="BorderThickness" Value="1,0,1,1" TargetName="PART_Border"/>
+                </MultiTrigger>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="ColumnPosition" Value="Middle"/>
+                        <Condition Property="HasRightSibling" Value="False"/>
+                        <Condition Property="HasTopElement" Value="False"/>
+                    </MultiTrigger.Conditions>
+                    <Setter Property="BorderThickness" Value="0,1,0,1" TargetName="PART_Border"/>
+                </MultiTrigger>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="ColumnPosition" Value="Middle"/>
+                        <Condition Property="HasRightSibling" Value="False"/>
+                        <Condition Property="HasTopElement" Value="True"/>
+                    </MultiTrigger.Conditions>
+                    <Setter Property="BorderThickness" Value="0,0,0,1" TargetName="PART_Border"/>
+                </MultiTrigger>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="ColumnPosition" Value="Middle"/>
+                        <Condition Property="HasRightSibling" Value="True"/>
+                        <Condition Property="HasTopElement" Value="False"/>
+                    </MultiTrigger.Conditions>
+                    <Setter Property="BorderThickness" Value="0,1,1,1" TargetName="PART_Border"/>
+                </MultiTrigger>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="ColumnPosition" Value="Middle"/>
+                        <Condition Property="HasRightSibling" Value="True"/>
+                        <Condition Property="HasTopElement" Value="True"/>
+                    </MultiTrigger.Conditions>
+                    <Setter Property="BorderThickness" Value="0,0,1,1" TargetName="PART_Border"/>
+                </MultiTrigger>
+                <Trigger Property="dxg:ColumnBase.HeaderPresenterType" Value="GroupPanel">
+                    <Setter Property="Margin" Value="2,0,2,0" TargetName="PART_Border"/>
+                    <Setter Property="ContentMargin" Value="7,4,7,6" TargetName="PART_LayoutPanel"/>
+                    <Setter Property="Margin" TargetName="PART_LayoutPanel">
+                        <Setter.Value>
+                            <Binding Path="(dxg:GridColumn.GroupIndex)">
+                                <Binding.Converter>
+                                    <dxg:GroupPanelPaddingConverter Offset="5"/>
+                                </Binding.Converter>
+                            </Binding>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="VerticalAlignment" Value="Top" TargetName="PART_LayoutPanel"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </Window.Resources>
+    <Grid>
+        <dxg:GridControl Name="grid1" ItemsSource="{Binding List}" AutoGenerateColumns="AddNew">
+            <dxg:GridControl.Columns>
+                <dxg:GridColumn FieldName="Name" AllowAutoFilter="True"/>
+                <dxg:GridColumn FieldName="FirstValue"/>
+                <dxg:GridColumn FieldName="SecondValue"/>
+                <dxg:GridColumn FieldName="IsCompleted"/>
+            </dxg:GridControl.Columns>
+            <dxg:GridControl.View>
+                <dxg:TableView/>
+            </dxg:GridControl.View>
+        </dxg:GridControl>
+    </Grid>
+</Window>
