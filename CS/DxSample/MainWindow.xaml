@@ -1,0 +1,275 @@
+﻿<Window 
+    x:Class="DxSample.MainWindow" 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:local="clr-namespace:DxSample" 
+    xmlns:dxght="clr-namespace:DevExpress.Xpf.Grid.HitTest;assembly=DevExpress.Xpf.Grid.v12.1" 
+    xmlns:dxcn="clr-namespace:DevExpress.Xpf.Core.Native;assembly=DevExpress.Xpf.Core.v12.1" 
+    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" 
+    xmlns:dxgcore="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
+    xmlns:dxgt="http://schemas.devexpress.com/winfx/2008/xaml/grid/themekeys" 
+    xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+    Title="MainWindow" 
+    Height="350" 
+    Width="525">
+    <Grid>
+        <Grid.Resources>
+            <local:FilterAlignmentConverter x:Key="cnv"/>
+            <ControlTemplate x:Key="{dxgt:GridColumnHeaderThemeKey ResourceKey=ControlTemplate}" TargetType="{x:Type dxgcore:GridColumnHeaderBase}">
+                <Grid x:Name="grid">
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <Storyboard FillBehavior="Stop">
+                                    <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="border1_1" Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[1].(GradientStop.Color)">
+                                        <SplineColorKeyFrame KeyTime="00:00:00.3000000" Value="#FF7499CE" />
+                                    </ColorAnimationUsingKeyFrames>
+                                    <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="border1_1" Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[2].(GradientStop.Color)">
+                                        <SplineColorKeyFrame KeyTime="00:00:00.3000000" Value="#FF244985" />
+                                    </ColorAnimationUsingKeyFrames>
+                                    <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="border1_2" Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[0].(GradientStop.Color)">
+                                        <SplineColorKeyFrame KeyTime="00:00:00.3000000" Value="#FF2C5494" />
+                                    </ColorAnimationUsingKeyFrames>
+                                    <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="border1_2" Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[1].(GradientStop.Color)">
+                                        <SplineColorKeyFrame KeyTime="00:00:00.3000000" Value="#FF6086BE" />
+                                    </ColorAnimationUsingKeyFrames>
+                                    <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="border1_2" Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[2].(GradientStop.Color)">
+                                        <SplineColorKeyFrame KeyTime="00:00:00.3000000" Value="#FFA2C5F4" />
+                                    </ColorAnimationUsingKeyFrames>
+                                    <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="border1_2" Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[3].(GradientStop.Color)">
+                                        <SplineColorKeyFrame KeyTime="00:00:00.3000000" Value="#FF3A629F" />
+                                    </ColorAnimationUsingKeyFrames>
+                                </Storyboard>
+                            </VisualState>
+                            <VisualState x:Name="MouseOver">
+                                <Storyboard>
+                                    <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="border1_1" Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[1].(GradientStop.Color)">
+                                        <SplineColorKeyFrame KeyTime="00:00:00" Value="#FF7499CE" />
+                                        <SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF9AD5F6" />
+                                    </ColorAnimationUsingKeyFrames>
+                                    <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="border1_1" Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[2].(GradientStop.Color)">
+                                        <SplineColorKeyFrame KeyTime="00:00:00" Value="#FF244985" />
+                                        <SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF2C5597" />
+                                    </ColorAnimationUsingKeyFrames>
+                                    <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="border1_2" Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[0].(GradientStop.Color)">
+                                        <SplineColorKeyFrame KeyTime="00:00:00" Value="#FF2C5494" />
+                                        <SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF3863A7" />
+                                    </ColorAnimationUsingKeyFrames>
+                                    <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="border1_2" Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[1].(GradientStop.Color)">
+                                        <SplineColorKeyFrame KeyTime="00:00:00" Value="#FF6086BE" />
+                                        <SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF7CABDA" />
+                                    </ColorAnimationUsingKeyFrames>
+                                    <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="border1_2" Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[2].(GradientStop.Color)">
+                                        <SplineColorKeyFrame KeyTime="00:00:00" Value="#FFA2C5F4" />
+                                        <SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FFC2DBFD" />
+                                    </ColorAnimationUsingKeyFrames>
+                                    <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="border1_2" Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[3].(GradientStop.Color)">
+                                        <SplineColorKeyFrame KeyTime="00:00:00" Value="#FF3A629F" />
+                                        <SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF4F78B5" />
+                                    </ColorAnimationUsingKeyFrames>
+                                </Storyboard>
+                            </VisualState>
+                            <VisualState x:Name="Pressed">
+                                <Storyboard>
+                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="border1_1_1" Storyboard.TargetProperty="Visibility">
+                                        <DiscreteObjectKeyFrame KeyTime="0">
+                                            <DiscreteObjectKeyFrame.Value>
+                                                <Visibility>Visible</Visibility>
+                                            </DiscreteObjectKeyFrame.Value>
+                                        </DiscreteObjectKeyFrame>
+                                    </ObjectAnimationUsingKeyFrames>
+                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="border1_2_1" Storyboard.TargetProperty="Visibility">
+                                        <DiscreteObjectKeyFrame KeyTime="0">
+                                            <DiscreteObjectKeyFrame.Value>
+                                                <Visibility>Visible</Visibility>
+                                            </DiscreteObjectKeyFrame.Value>
+                                        </DiscreteObjectKeyFrame>
+                                    </ObjectAnimationUsingKeyFrames>
+                                </Storyboard>
+                            </VisualState>
+                        </VisualStateGroup>
+                        <VisualStateGroup x:Name="HasRightSiblingStates">
+                            <VisualState x:Name="HasSibling" />
+                            <VisualState x:Name="NoSibling">
+                                <Storyboard>
+                                    <ObjectAnimationUsingKeyFrames Duration="0" Storyboard.TargetName="Border" Storyboard.TargetProperty="BorderThickness" dxcn:ValueSetter.Thickness="0" />
+                                </Storyboard>
+                            </VisualState>
+                        </VisualStateGroup>
+                        <VisualStateGroup x:Name="ColumnPositionStates">
+                            <VisualState x:Name="Standalone">
+                                <Storyboard>
+                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="leftGlare" Storyboard.TargetProperty="Visibility" dxcn:ValueSetter.Visibility="Collapsed" />
+                                    <ObjectAnimationUsingKeyFrames Duration="0" Storyboard.TargetName="Border" Storyboard.TargetProperty="CornerRadius" dxcn:ValueSetter.CornerRadius="3" />
+                                    <ObjectAnimationUsingKeyFrames Duration="0" Storyboard.TargetName="border1_1" Storyboard.TargetProperty="CornerRadius" dxcn:ValueSetter.CornerRadius="2" />
+                                    <ObjectAnimationUsingKeyFrames Duration="0" Storyboard.TargetName="border1_1_1" Storyboard.TargetProperty="CornerRadius" dxcn:ValueSetter.CornerRadius="2" />
+                                    <ObjectAnimationUsingKeyFrames Duration="0" Storyboard.TargetName="border1_2" Storyboard.TargetProperty="CornerRadius" dxcn:ValueSetter.CornerRadius="2" />
+                                    <ObjectAnimationUsingKeyFrames Duration="0" Storyboard.TargetName="border1_2_1" Storyboard.TargetProperty="CornerRadius" dxcn:ValueSetter.CornerRadius="2" />
+                                    <ObjectAnimationUsingKeyFrames Duration="0" Storyboard.TargetName="Border" Storyboard.TargetProperty="BorderThickness" dxcn:ValueSetter.Thickness="0" />
+                                    <ObjectAnimationUsingKeyFrames Duration="0" Storyboard.TargetName="Border" Storyboard.TargetProperty="Padding" dxcn:ValueSetter.Thickness="1" />
+                                    <ObjectAnimationUsingKeyFrames Duration="0" Storyboard.TargetName="Border" Storyboard.TargetProperty="VerticalAlignment" dxcn:ValueSetter.VerticalAlignment="Top" />
+                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="CaptionToArrowIndent" Storyboard.TargetProperty="Visibility" dxcn:ValueSetter.Visibility="Visible" />
+                                </Storyboard>
+                            </VisualState>
+                            <VisualState x:Name="Right">
+                                <Storyboard>
+                                    <ObjectAnimationUsingKeyFrames Duration="0" Storyboard.TargetName="Border" Storyboard.TargetProperty="BorderThickness" dxcn:ValueSetter.Thickness="0" />
+                                    <ObjectAnimationUsingKeyFrames Duration="0" Storyboard.TargetName="Border" Storyboard.TargetProperty="Padding" dxcn:ValueSetter.Thickness="1,1,1,1" />
+                                    <ObjectAnimationUsingKeyFrames Duration="0" Storyboard.TargetName="Border" Storyboard.TargetProperty="CornerRadius" dxcn:ValueSetter.CornerRadius="0,3,0,0" />
+                                    <ObjectAnimationUsingKeyFrames Duration="0" Storyboard.TargetName="border1_1" Storyboard.TargetProperty="CornerRadius" dxcn:ValueSetter.CornerRadius="0,2,0,0" />
+                                    <ObjectAnimationUsingKeyFrames Duration="0" Storyboard.TargetName="border1_1_1" Storyboard.TargetProperty="CornerRadius" dxcn:ValueSetter.CornerRadius="0,2,0,0" />
+                                    <ObjectAnimationUsingKeyFrames Duration="0" Storyboard.TargetName="border1_2" Storyboard.TargetProperty="CornerRadius" dxcn:ValueSetter.CornerRadius="0,2,5,0" />
+                                    <ObjectAnimationUsingKeyFrames Duration="0" Storyboard.TargetName="border1_2_1" Storyboard.TargetProperty="CornerRadius" dxcn:ValueSetter.CornerRadius="0,2,5,0" />
+                                </Storyboard>
+                            </VisualState>
+                            <VisualState x:Name="Left">
+                                <Storyboard>
+                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="leftGlare" Storyboard.TargetProperty="Visibility" dxcn:ValueSetter.Visibility="Collapsed" />
+                                    <ObjectAnimationUsingKeyFrames Duration="0" Storyboard.TargetName="Border" Storyboard.TargetProperty="CornerRadius" dxcn:ValueSetter.CornerRadius="3,0,0,0" />
+                                    <ObjectAnimationUsingKeyFrames Duration="0" Storyboard.TargetName="Border" Storyboard.TargetProperty="Padding" dxcn:ValueSetter.Thickness="1,1,0,1" />
+                                    <ObjectAnimationUsingKeyFrames Duration="0" Storyboard.TargetName="border1_1" Storyboard.TargetProperty="CornerRadius" dxcn:ValueSetter.CornerRadius="2,0,0,0" />
+                                    <ObjectAnimationUsingKeyFrames Duration="0" Storyboard.TargetName="border1_1_1" Storyboard.TargetProperty="CornerRadius" dxcn:ValueSetter.CornerRadius="2,0,0,0" />
+                                    <ObjectAnimationUsingKeyFrames Duration="0" Storyboard.TargetName="border1_2" Storyboard.TargetProperty="CornerRadius" dxcn:ValueSetter.CornerRadius="2,0,0,5" />
+                                    <ObjectAnimationUsingKeyFrames Duration="0" Storyboard.TargetName="border1_2_1" Storyboard.TargetProperty="CornerRadius" dxcn:ValueSetter.CornerRadius="2,0,0,5" />
+                                </Storyboard>
+                            </VisualState>
+                            <VisualState x:Name="Middle"/>
+                        </VisualStateGroup>
+                        <VisualStateGroup x:Name="HeaderPresenterTypeStates">
+                            <VisualState x:Name="Headers" />
+                            <VisualState x:Name="GroupPanel">
+                                <Storyboard>
+                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="outerBorder" Storyboard.TargetProperty="Visibility" dxcn:ValueSetter.Visibility="Visible" />
+                                    <ObjectAnimationUsingKeyFrames Duration="0" Storyboard.TargetName="Border" Storyboard.TargetProperty="Margin" dxcn:ValueSetter.Thickness="2,0,2,0" />
+                                    <ObjectAnimationUsingKeyFrames Duration="0" Storyboard.TargetName="PART_ColumnHeaderContent" Storyboard.TargetProperty="VerticalAlignment" dxcn:ValueSetter.VerticalAlignment="Top" />
+                                </Storyboard>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Border x:Name="outerBorder" Visibility="Collapsed">
+                        <Border.Margin>
+                            <Binding Path="(dxg:GridColumn.GroupIndex)">
+                                <Binding.Converter>
+                                    <dxg:GroupPanelPaddingConverter Offset="5" />
+                                </Binding.Converter>
+                            </Binding>
+                        </Border.Margin>
+                    </Border>
+                    <ContentControl x:Name="PART_ColumnHeaderContent" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" IsTabStop="False" Grid.Row="1">
+                        <ContentControl.Foreground>
+                            <SolidColorBrush x:Name="Foreground" Color="#FFD0EBFF" />
+                        </ContentControl.Foreground>
+                        <Border x:Name="Border" Background="#FF062B63" Padding="0,1,0,1" BorderBrush="#FF062B63" BorderThickness="0,0,1,0">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="0.5*" />
+                                    <RowDefinition Height="0.5*" />
+                                </Grid.RowDefinitions>
+                                <Border x:Name="border1_1" Grid.RowSpan="2">
+                                    <Border.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FF193B74" Offset="0" />
+                                            <GradientStop Color="#FF7499CE" Offset="1" />
+                                            <GradientStop Color="#FF244985" Offset="0.529" />
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+                                </Border>
+                                <Border x:Name="border1_1_1" Grid.RowSpan="2" Visibility="Collapsed">
+                                    <Border.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FF193B74" Offset="0" />
+                                            <GradientStop Color="#FF193B74" Offset="0" />
+                                            <GradientStop Color="#FF2C5597" Offset="1" />
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+                                </Border>
+                                <Border Margin="0,0,0,1" x:Name="border1_2">
+                                    <Border.Background>
+                                        <LinearGradientBrush EndPoint="0.5,-0.002" StartPoint="0.5,1.002">
+                                            <GradientStop Color="#FF2C5494" Offset="0" />
+                                            <GradientStop Color="#FF6086BE" Offset="0.885" />
+                                            <GradientStop Color="#FFA2C5F4" Offset="1" />
+                                            <GradientStop Color="#FF3A629F" Offset="0.317" />
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+                                </Border>
+                                <Border Margin="0,0,0,1" x:Name="border1_2_1" Visibility="Collapsed">
+                                    <Border.Background>
+                                        <LinearGradientBrush EndPoint="0.5,-0.002" StartPoint="0.5,1.002">
+                                            <GradientStop Color="#FF2C5494" Offset="0" />
+                                            <GradientStop Color="#FF2C5494" Offset="0" />
+                                            <GradientStop Color="#FF2C4B8E" Offset="1" />
+                                            <GradientStop Color="#FF416CAB" Offset="0.837" />
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+                                </Border>
+                                <Rectangle x:Name="leftGlare" HorizontalAlignment="Left" Width="1" Grid.RowSpan="2">
+                                    <Rectangle.Fill>
+                                        <LinearGradientBrush EndPoint="0.5,0" StartPoint="0.5,1">
+                                            <GradientStop Color="#00C0DAFB" Offset="0" />
+                                            <GradientStop Color="#57CDE2FF" Offset="1" />
+                                        </LinearGradientBrush>
+                                    </Rectangle.Fill>
+                                </Rectangle>
+                                <Grid Margin="4,3,4,5" Grid.RowSpan="2" x:Name="PART_Content">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <dxg:HeaderContentControl x:Name="PART_HeaderPresenter" />
+                                        <dxgcore:ColumnHeaderFilterControl 
+                                            HorizontalAlignment="{Binding RelativeSource={RelativeSource AncestorType=dxg:GridColumnHeader}, Converter={StaticResource cnv}}" 
+                                            Width="16" 
+                                            Grid.Column="1" 
+                                            VerticalAlignment="Top" 
+                                            IsTabStop="False" 
+                                            x:Name="PART_ColumnFilter" 
+                                            Foreground="{Binding Path=Foreground, ElementName=PART_ColumnHeaderContent}">
+                                            <dxg:GridViewHitInfoBase.HitTestAcceptor>
+                                                <Binding Path="(dxg:GridColumn.HeaderPresenterType)" RelativeSource="{RelativeSource TemplatedParent}">
+                                                    <Binding.Converter>
+                                                        <dx:EnumToObjectConverter>
+                                                            <dx:EnumToObjectConverter.DefaultValue>
+                                                                <dxght:ColumnHeaderFilterButtonTableViewHitTestAcceptor />
+                                                            </dx:EnumToObjectConverter.DefaultValue>
+                                                            <dx:EnumToObjectConverter.Values>
+                                                                <dxght:GroupPanelColumnHeaderFilterButtonTableViewHitTestAcceptor x:Key="GroupPanel" />
+                                                            </dx:EnumToObjectConverter.Values>
+                                                        </dx:EnumToObjectConverter>
+                                                    </Binding.Converter>
+                                                </Binding>
+                                            </dxg:GridViewHitInfoBase.HitTestAcceptor>
+                                        </dxgcore:ColumnHeaderFilterControl>
+                                    <dx:XPFContentPresenter x:Name="PART_HeaderCustomizationArea" Grid.Column="2" Style="{DynamicResource {dxgt:GridColumnHeaderThemeKey ResourceKey=HeaderCustomizationAreaStyle}}" />
+                                    <Border x:Name="CaptionToArrowIndent" Grid.Column="3" Style="{DynamicResource {dxgt:GridColumnHeaderThemeKey ResourceKey=CaptionToArrowIndentBorderStyle}}" Visibility="Collapsed" />
+                                    <dxgcore:ColumnHeaderSortIndicatorControl IsTabStop="False" x:Name="PART_SortUpIndicator" Grid.Column="3" Style="{DynamicResource {dxgt:GridColumnHeaderThemeKey ResourceKey=SortArrowUpStyle}}" Template="{DynamicResource {dxgt:GridColumnHeaderThemeKey ResourceKey=SortArrowUpTemplate}}" Visibility="Collapsed" />
+                                    <dxgcore:ColumnHeaderSortIndicatorControl IsTabStop="False" x:Name="PART_SortDownIndicator" Grid.Column="3" Style="{DynamicResource {dxgt:GridColumnHeaderThemeKey ResourceKey=SortArrowDownStyle}}" Template="{DynamicResource {dxgt:GridColumnHeaderThemeKey ResourceKey=SortArrowDownTemplate}}" Visibility="Collapsed" />
+                                </Grid>
+                                <dxg:DesignTimeSelectionControl x:Name="PART_DesignTimeSelection" Grid.RowSpan="2" Visibility="Collapsed" IsTabStop="False"/>
+                            </Grid>
+                        </Border>
+                    </ContentControl>
+                    <dxg:GridThumb Name="PART_HeaderGripper" HorizontalAlignment="Right" Cursor="SizeWE" Grid.Row="1" Visibility="Collapsed"/>
+                </Grid>
+            </ControlTemplate>
+        </Grid.Resources>
+        
+        <dxg:GridControl AutoPopulateColumns="True" Name="gridControl1">
+            <dxg:GridControl.Columns>
+                <dxg:GridColumn FieldName="FirstName" local:FilterAlingment.FilterAlingment="Right"/>
+                <dxg:GridColumn FieldName="LastName" local:FilterAlingment.FilterAlingment="Center"/>
+                <dxg:GridColumn FieldName="City" local:FilterAlingment.FilterAlingment="Left"/>
+                <dxg:GridColumn FieldName="Country"/>
+            </dxg:GridControl.Columns>
+            <dxg:GridControl.View>
+                <dxg:TableView Name="tableView1"  AutoWidth="True"/>
+            </dxg:GridControl.View>
+        </dxg:GridControl>
+    </Grid>
+</Window>
