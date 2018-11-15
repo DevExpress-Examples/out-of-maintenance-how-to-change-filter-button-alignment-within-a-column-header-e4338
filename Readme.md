@@ -1,3 +1,11 @@
+<!-- default file list -->
+*Files to look at*:
+
+* [MainWindow.xaml](./CS/MainWindow.xaml) (VB: [MainWindow.xaml.vb](./VB/MainWindow.xaml.vb))
+* [MainWindow.xaml.cs](./CS/MainWindow.xaml.cs) (VB: [MainWindow.xaml.vb](./VB/MainWindow.xaml.vb))
+* [MyPanel.cs](./CS/MyPanel.cs) (VB: [MyPanel.vb](./VB/MyPanel.vb))
+* [ViewModel.cs](./CS/ViewModel.cs) (VB: [ViewModel.vb](./VB/ViewModel.vb))
+<!-- default file list end -->
 # How to change Filter Button alignment within a column header
 
 
