@@ -5,7 +5,7 @@
 * [FilterAlignmentConverter.cs](./CS/DxSample/FilterAlignmentConverter.cs) (VB: [FilterAlignmentConverter.vb](./VB/DxSample/FilterAlignmentConverter.vb))
 * [FilterAlingment.cs](./CS/DxSample/FilterAlingment.cs) (VB: [FilterAlingment.vb](./VB/DxSample/FilterAlingment.vb))
 * [MainWindow.xaml](./CS/DxSample/MainWindow.xaml) (VB: [MainWindow.xaml](./VB/DxSample/MainWindow.xaml))
-* [MainWindow.xaml.cs](./CS/DxSample/MainWindow.xaml.cs) (VB: [MainWindow.xaml](./VB/DxSample/MainWindow.xaml))
+* [MainWindow.xaml.cs](./CS/DxSample/MainWindow.xaml.cs) (VB: [MainWindow.xaml.vb](./VB/DxSample/MainWindow.xaml.vb))
 <!-- default file list end -->
 # How to change Filter Button alignment within a column header
 
